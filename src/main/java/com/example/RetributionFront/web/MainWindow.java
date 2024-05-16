@@ -1,5 +1,6 @@
 package com.example.RetributionFront.web;//package com.example.retributionFront.web;
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -17,13 +18,17 @@ public class MainWindow extends AppLayout {
     Button buttonDescription;
 
     public MainWindow() {
+//        getElement().getStyle().set("background-image", "url(img/1.jpeg)");
         H1 lText = new H1("Добро пожаловать на проект Возмездие!");
 
         buttonTask = new Button("Задачник");
+        buttonTask.addThemeVariants(ButtonVariant.LUMO_PRIMARY, ButtonVariant.LUMO_ERROR);
+        buttonTask.addClickListener(event -> UI.getCurrent().navigate(TaskWindow.class));
+
         buttonDescription = new Button("Разборщик");
-        buttonTask.addThemeVariants(ButtonVariant.LUMO_PRIMARY,
-                ButtonVariant.LUMO_ERROR);
         buttonDescription.addClassName("v-button-custom");
+        buttonDescription.addClickListener(event -> UI.getCurrent().navigate(DescriptionWindow.class));
+
         VerticalLayout verticalLayout = new VerticalLayout();
         verticalLayout.add(lText, buttonTask, buttonDescription);
         verticalLayout.setAlignItems(FlexComponent.Alignment.CENTER);
