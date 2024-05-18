@@ -1,5 +1,6 @@
 package com.example.RetributionFront.web;//package com.example.retributionFront.web;
 
+import com.example.RetributionFront.service.MyTrayIcon;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.button.Button;
@@ -17,7 +18,11 @@ public class MainWindow extends AppLayout {
     Button buttonTask;
     Button buttonDescription;
 
-    public MainWindow() {
+    final MyTrayIcon icon;
+
+    public MainWindow(MyTrayIcon icon) {
+//        icon.setImage(MyTrayIcon.createImage("images/1.png", "Main"));
+
 //        getElement().getStyle().set("background-image", "url(img/1.jpeg)");
         H1 lText = new H1("Добро пожаловать на проект Возмездие!");
 
@@ -36,5 +41,6 @@ public class MainWindow extends AppLayout {
         verticalLayout.setSizeFull();
 
         setContent(verticalLayout);
+        this.icon = icon;
     }
 }
